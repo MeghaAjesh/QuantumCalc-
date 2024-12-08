@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neon Calculator</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inconsolata:wght@400;700&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #000; /* Dark background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Inconsolata', monospace;
+        }
+        .calculator-container {
+            background: linear-gradient(145deg, #1c1c1c, #292929);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(102, 31, 201, 0.5);
+            text-align: center;
+        }
+        h2 {
+            font-family: 'Anton', sans-serif;
+            font-size: 2rem;
+            color: rgb(52, 10, 138);
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px white;
+        }
+        .form-control {
+            background-color: #111;
+            border: none;
+            border-radius: 10px;
+            color: white;
+            font-size: 1.5rem;
+            text-align: right;
+            padding: 10px 20px;
+            box-shadow: inset 0 0 10px rgb(87, 15, 180);
+        }
+        .form-control:focus {
+            outline: none;
+            box-shadow: 0 0 20px rgb(116, 19, 214);
+        }
+        .btn {
+            border: none;
+            font-size: 1.2rem;
+            margin: 5px;
+            padding: 15px 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(81, 6, 180, 0.5);
+            color: white;
+            background: #1c1c1c;
+            transition: all 0.2s ease-in-out;
+        }
+        .btn:hover {
+            background-color: rgb(158, 39, 213);
+            color: #000;
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgb(102, 37, 207);
+        }
+        .btn i {
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator-container">
+        <h2>QuantumCalc</h2>
+        <div class="mb-3">
+            <input type="text" class="form-control" id="result" placeholder="0" readonly>
+        </div>
+        <div>
+            <button class="btn" onclick="Calc(7)">7</button>
+            <button class="btn" onclick="Calc(8)">8</button>
+            <button class="btn" onclick="Calc(9)">9</button>
+            <button class="btn" onclick="Calc('*')">×</button>
+        </div>
+        <div>
+            <button class="btn" onclick="Calc(4)">4</button>
+            <button class="btn" onclick="Calc(5)">5</button>
+            <button class="btn" onclick="Calc(6)">6</button>
+            <button class="btn" onclick="Calc('-')">−</button>
+        </div>
+        <div>
+            <button class="btn" onclick="Calc(1)">1</button>
+            <button class="btn" onclick="Calc(2)">2</button>
+            <button class="btn" onclick="Calc(3)">3</button>
+            <button class="btn" onclick="Calc('+')">+</button>
+        </div>
+        <div>
+            <button class="btn" onclick="cleartext()">C</button>
+            <button class="btn" onclick="Calc(0)">0</button>
+            <button class="btn" onclick="Calc('/')">÷</button>
+            <button class="btn" onclick="Operation()">=</button>
+        </div>
+        <div>
+            <button class="btn" onclick="lastChar()"><i class="fa-solid fa-delete-left"></i></button>
+        </div>
+    </div>
+
+    <script>
+        function Calc(num) {
+            result.value += num; // Display number
+        }
+        function cleartext() {
+            result.value = ""; // Clear input
+        }
+        function Operation() {
+            result.value = eval(result.value); // Perform calculation
+        }
+        function lastChar() {
+            result.value = result.value.slice(0, -1); // Delete last character
+        }
+    </script>
+</body>
+</html>
